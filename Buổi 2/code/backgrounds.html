@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ví dụ về height, width, z-index, overflow, opacity</title>
+  <style>
+    .box-container {
+      position: relative;
+      height: 200px;
+      width: 300px;
+      border: 2px solid black;
+      overflow: scroll;
+      background-color: lightyellow;
+    }
+
+    .box1 {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      height: 100px;
+      width: 100px;
+      background-color: red;
+      z-index: 1;
+    }
+
+    .box2 {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      height: 100px;
+      width: 100px;
+      background-color: blue;
+      opacity: 0.5;
+      z-index: 2;
+    }
+
+    .content {
+      height: 400px;
+      width: 500px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Ví dụ về các thuộc tính layout</h2>
+
+  <div class="box-container">
+    <div class="content">
+      Nội dung lớn hơn khung box (overflow)!
+    </div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+  </div>
+
+</body>
+</html>

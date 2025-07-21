@@ -1,0 +1,57 @@
+/* body {
+    background-image: url("../image/con-lon.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+} */
+h1 {
+    background: linear-gradient(to right, rgb(0, 238, 255), rgb(192, 253, 255));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+p {
+    color: pink;
+    font-size: 20px;
+}
+
+#box1
+{
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    background-color: pink;
+}
+
+#box2
+{
+    width: 200px;
+    height: 200px;
+    border-style:solid;
+    background-color: yellow;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+/*hop nhat duong vien */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-right: 30px;
+}
+
+th, td {
+  border: 3px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+thead {
+  background-color: #eb3eb1;
+  color: white;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
