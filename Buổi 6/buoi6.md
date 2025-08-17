@@ -96,6 +96,51 @@ Là công cụ hiện đại, siêu nhanh để tạo dự án React. Vite sử 
 ### 5. JSX
  - JSX viết tắt của từ Javascript XML. JSX là một phần mở rộng của ngôn ngữ JavaScript dựa trên ES6 và được dịch sang JavaScript thông thường trong thời gian chạy.
  - Nó cho phép bạn viết các đoạn mã HTML trong ReactJS một cách dễ dàng và có cấu trúc hơn.
+#### Cú pháp JSX
+ - Cú pháp của JSX cũng tương tự như XML.
+
+**Ta có thẻ mở tag:**
+```jsx
+<JSXElementName JSXAttributesopt>
+```
+**Đóng tag:**
+```jsx
+</JSXElementName>
+```
+**Ở đây lưu ý tên của thẻ mở tag và đống tag phải giống nhau. ví dụ :**
+```jsx
+   <MyButton color="blue" shadowSize={2}>
+      Click Me
+    </MyButton>
+```
+**Ngoài ra JSX cũng có SelfClosingElement:**
+```jsx
+<JSXElementName JSXAttributes/>
+```
+ví dụ:
+```jsx
+<div className="sidebar" />
+```
+
+**chú ý** : JSX không phải là HTML do đó bạn nên cẩn thận kẻo nhầm với cú pháp của HTML nhé.
+
+Ví dụ trong một div element, ta định nghĩa một Class container thì ta không viết là:
+```jsx
+<div class="container">...</div> 
+mà phải viết là 
+<div className="container">...</div>
+```
+(vì class là keyword của Javascript). Hoặc for trong label element thì phải viết thành htmlfor, ....
+
+Ngoài ra HTML tag không cần đóng cũng được nhưng JSX cần thiết phải đóng tag nhé.
+
+```jsx
+<JSXElementName JSXAttributesopt>
+
+# something here
+
+</JSXElementName>
+``` 
  - Một số khác biệt giữa HTML và JSX:
 
 | Mô tả                          | Cấu trúc HTML                    | Cấu trúc JSX                       |
@@ -118,7 +163,17 @@ Cú pháp: `<></>`.
  - Biểu thức có thể là một biến React hoặc thuộc tính hoặc bất kỳ biểu thức JavaScript hợp lệ nào khác.
  - vidu:
 `const myElement = <h1>React is {5 + 5} times better with JSX</h1>;`
+**JSX cũng là biểu thức**
 
+Sau khi biên dịch, biểu thức JSX trở thành các đối tượng JavaScript thông thường. Điều này có nghĩa là bạn có thể sử dụng JSX bên trong các câu lệnh if và cho các vòng lặp, gán nó cho các biến, chấp nhận nó như các đối số, và trả về nó từ các hàm:
+```jsx
+function getGreeting(user) {
+  if (user) {
+    return <h1>Hello, {formatName(user)}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
+}
+```
 **Điều kiện - câu lệnh if**
  - React hỗ trợ các câu lệnh, nhưng không hỗ trợ bên trong JSX
  - Để có thể sử dụng các câu lệnh có điều kiện trong JSX, bạn nên đặt các câu lệnh bên ngoài JSX, hoặc bạn có thể sử dụng biểu thức bậc ba thay thế `if`
@@ -169,7 +224,16 @@ class Welcome extends Component {
 }
 export default Welcome; 
 ```
- - Khi bạn muốn làm việc với với các chức năng của component như events, state, lifce cycles hay tổ chức các đoạn code theo cấu trúc theo mô hình OOP thì bạn có thể cân nhắc sử dụng class components. 
+
+Bạn có thể thấy, **class ExampleComponent** kế thừa **Component**, vì vậy React hiểu class này là một component, và nó renders (returns) 1 React Element.
+
+Vì vậy, một React class component là:
+
+- là một class ES6, nó sẽ là một component khi nó "kế thừa" React **component**.
+- có thể nhận **props** (trong hàm khởi tạo) nếu cần.
+- có thể maintain data của nó với **state**
+- phải có 1 method **render()** trả về 1 React element (JSX), or null
+Khi bạn muốn làm việc với với các chức năng của component như events, state, lifce cycles hay tổ chức các đoạn code theo cấu trúc theo mô hình OOP thì bạn có thể cân nhắc sử dụng class components. 
 #### 6.2. Function Component
  - Đây là cách viết phổ biến và được sử dụng nhiều nhất trong các dự án mà mình viết, bởi tính nhanh gọn và không quá phức tạp như các viết class component. 
  - Tiến hành tạo một file có tên Welcome.js trong thư mục src/components:
@@ -203,6 +267,7 @@ function App() {
  
 export default App;
 ```
+ - Funtion có thể nhận props làm tham số(nếu nó cần), nhưng chúng **bắt buộc** phải trả về **React element**.
  - Trong functional component thì sẽ không có các khái niệm như state, life cycles, events,...nhưng trong phiên bản gần đây thì React cũng đã hỗ trợ thêm React Hooks cho phép bạn làm việc với state, lifecycles dễ dàng hơn trong funcitonal components.
  - Bây giờ hầu như funcitonal component có hầu hết chức năng giống như class component nên bạn có thể cân nhắc sử dụng nó nhiều hơn.
 
@@ -278,17 +343,31 @@ export default ListComponent
      - List sẽ không được lọc (thêm / xóa các mục khỏi danh sách).
      - Không có id cho các mục trong list.
 ### 8. Props và State
-#### Props
- - Props là một object được truyền vào trong một components, mỗi components sẽ nhận vào props và trả về react element.
-Props cho phép chúng ta giao tiếp giữa các components với nhau bằng cách truyền tham số qua lại giữa các components.
+#### Props (properties)
+ - Props là một object được truyền vào trong một components, nó lưu trữ các giá trị của các attribute (thuộc tính) của một thẻ (Tag). mỗi components sẽ nhận vào props và trả về react element. Props cho phép chúng ta giao tiếp giữa các components với nhau bằng cách truyền tham số qua lại giữa các components.
  - Khi một components cha truyền cho component con một props thì components con chỉ có thể đọc và không có quyền chỉnh sửa nó bên phía components cha.
  - Cách truyền một props cũng giống như cách mà bạn thêm một attributes cho một element HTML.
 ```jsx
 const App = () => <Welcome name="anhtran"></Welcome>
 ```
  - Trong ví dụ bên trên, component có tên Welcome sẽ nhận được giá trị của props có tên name vừa mới được truyền vào.
+Hoặc ví dụ:
+Ví dụ:
+```jsx
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="ReactJS" />;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+ - Trong đó, `name` ở `{props.name}` là property, `Welcome` là Component. Mỗi `property` của Component sẽ tương ứng với 1 attribute của thẻ, giá trị của attribute sẽ được truyền vào property của Component.
+ - Với ví dụ trên, dòng `<Welcome name="ReactJS" />` tạo ra một Component `Welcome` và `attribute` có value là `ReactJS`, ở bên trên chúng ta có 1 function component trả về `Hello, {props.name}` và như vậy, {props.name} sẽ cho chúng ta giá trị là `ReactJS` mà Component `Welcome` truyền vào, và cuối cùng thì khi `render` sẽ ra đoạn : Hello, `ReactJS`. Giống như là 1 cách gọi hàm trong `javascript` đúng không nhỉ
 #### State
- - State là một object có thể được sử dụng để chứa dữ liệu hoặc thông tin về components. State có thể được thay đổi bất cứ khi nào mong muốn. 
+ - State là một object có thể được sử dụng để chứa dữ liệu hoặc thông tin về components. State có thể được thay đổi bất cứ khi nào mong muốn.(dữ liệu động)
  - Khác với props bạn có thể truyền props sang các components khác nhau thì state chỉ tồn tại trong phạm vi của components chứa nó, mỗi khi state thay đổi thì components đó sẽ được render lại.
  - Để cập nhật lại 1 thành phần chúng ta sử dụng useState
    - useState nhận một giá trị khởi tạo (initState) làm đối số
@@ -352,7 +431,9 @@ function ActionLink() {
  - Ở đây, e là một object chứa tất cá event. React định nghĩa object này theo W3C spec, vì vậy chúng ta không cần phải quan tâm về khả năng tương thích giữa các trình duyệt với nhau.
 
 **Lưu ý với this trong xử lý Events**
+ - Trong JavaScript, **class methods không được bind mặc định**. Nếu bạn quên bind `this.handleClick` và truyền nó vào `onClick`, thì `this` sẽ là `undefined` khi hàm được gọi.
 
+ - Điều này **không phải** là hành vi riêng của React, mà là cách hàm hoạt động trong JavaScript. Nếu bạn truyền một method mà không có `()`, như `onClick={this.handleClick}`, bạn cần bind method đó.
 ### 10. Conditional Rendering
 #### a, v-if
  - Chúng ta sử dụng v-if directive để render template theo một điều kiện nào đó.
@@ -495,8 +576,100 @@ src/
 │       ├── ProductList.js
 │       └── ProductItem.js
 ```
+#### Các loại component
 
-### 3. Import/Export Components
+| Loại Component          | Mô tả                                      | Ví dụ                           |
+| ----------------------- | ------------------------------------------ | ------------------------------- |
+| **Presentational (UI)** | Chỉ hiển thị UI, không chứa logic phức tạp | `Button`, `Header`, `Footer`    |
+| **Container (Logic)**   | Chứa logic, quản lý state và gọi API       | `UserList`, `ProductPage`       |
+| **Layout Component**    | Chứa layout chung cho nhiều trang          | `MainLayout`, `DashboardLayout` |
+| **Shared Component**    | Component dùng lại nhiều nơi               | `Modal`, `Input`, `Card`        |
+
+### 3. Cấu trúc dự án React
+
+#### 3.1. Cấu trúc cơ bản (mặc định create-react-app)
+
+```
+my-app/
+│
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+│
+├── src/
+│   ├── App.js
+│   ├── index.js
+│   ├── App.css
+│   └── ...
+│
+├── package.json
+└── README.md
+```
+
+* **Ưu điểm:** Đơn giản, dễ bắt đầu.
+* **Nhược điểm:** Khi dự án lớn, khó quản lý component và logic.
+
+---
+
+#### 3.2. Cấu trúc tối ưu cho dự án vừa và lớn
+
+```
+src/
+│
+├── assets/           # Chứa hình ảnh, font, CSS global
+│   ├── images/
+│   └── styles/
+│
+├── components/       # Component tái sử dụng (UI chung)
+│   ├── Button/
+│   │   ├── Button.jsx
+│   │   └── Button.module.css
+│   └── Modal/
+│       ├── Modal.jsx
+│       └── Modal.module.css
+│
+├── features/         # Chức năng (feature-based)
+│   ├── Auth/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── authSlice.js
+│   └── Product/
+│       ├── components/
+│       ├── pages/
+│       └── productSlice.js
+│
+├── layouts/          # Layout chung
+│   ├── MainLayout.jsx
+│   └── DashboardLayout.jsx
+│
+├── pages/            # Các trang chính
+│   ├── Home/
+│   ├── About/
+│   └── Contact/
+│
+├── hooks/            # Custom Hooks
+│   └── useAuth.js
+│
+├── services/         # API services
+│   └── productService.js
+│
+├── utils/            # Hàm tiện ích (helpers)
+│   └── formatDate.js
+│
+├── App.jsx
+└── index.js
+```
+
+---
+
+#### 3.3. Nguyên tắc quản lý thư mục
+
+1. **Nhóm theo chức năng (feature-based)** thay vì nhóm theo loại file.
+2. **Component riêng cho từng feature** để dễ bảo trì.
+3. **CSS module hoặc styled-components** để tránh trùng class.
+4. **Tránh import chéo lộn xộn** → dùng alias (`@components`, `@hooks`, …).
+5. **Giữ cho component nhỏ gọn** → mỗi file dưới 200 dòng là hợp lý.
+### 4. Import/Export Components
 
 - Để sử dụng component ở file khác, cần export component đó:
 ```jsx
