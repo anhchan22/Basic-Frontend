@@ -480,33 +480,7 @@ function ActionLink() {
 
  - Điều này **không phải** là hành vi riêng của React, mà là cách hàm hoạt động trong JavaScript. Nếu bạn truyền một method mà không có `()`, như `onClick={this.handleClick}`, bạn cần bind method đó.
 ### 10. Conditional Rendering
-#### a, v-if
- - Chúng ta sử dụng v-if directive để render template theo một điều kiện nào đó.
-```
-<h1 v-if="ok">Yes</h1>
-```
- - Nếu giá trị của ok là true thì thẻ h1 sẽ hiển thị, ngược lại thẻ h1 sẽ bị ẩn. Ngoài ra chúng ta cũng có thể bổ sung thêm lệnh v-else.
-```
-<h1 v-if="ok">Yes</h1>
-<h1 v-else>NO</h1>
-```
- - Vì v-if là một directive nên bản thân nó chỉ nằm trong một thẻ HTML duy nhất, vì vậy khi bạn muốn nhiều thẻ chịu tác dụng thì bắt buộc phải sử dụng một thẻ template bao bên ngoài và đặt v-if bên trong thẻ đó
-#### b, v-else và v-else-if 
- - Cũng giống như lệnh if else, bạn có thể sử dụng bộ ba directives v-if, v-else, v-else-if để rẻ nhánh.
-```
-<div v-if="type === 'A'">
-    A
-</div>
-<div v-else-if="type === 'B'">
-    B
-</div>
-<div v-else-if="type === 'C'">
-    C
-</div>
-<div v-else>
-    Not A/B/C
-</div>
-```
+
 #### c, Inline If với toán tử `&&`
 
 Bạn có thể chèn các biểu thức trong JSX bằng cách đặt chúng trong `{}`. Điều này bao gồm toán tử `&&` trong JavaScript.
