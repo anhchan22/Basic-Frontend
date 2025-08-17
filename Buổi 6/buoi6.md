@@ -69,8 +69,6 @@ function Welcome(props) {
  - Khả năng tương thích ngược
  - Tương lai sáng
 ### 4. CLI Tools
-#### 4.1. Create React App
-#### 4.2. Vite
 **CLI Tools** là các công cụ dòng lệnh giúp tạo và quản lý dự án React một cách nhanh chóng, tự động hóa các bước cấu hình phức tạp.
 
 #### 4.1. Create React App
