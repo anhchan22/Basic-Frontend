@@ -507,6 +507,84 @@ function ActionLink() {
     Not A/B/C
 </div>
 ```
+#### c, Inline If với toán tử `&&`
+
+Bạn có thể chèn các biểu thức trong JSX bằng cách đặt chúng trong `{}`. Điều này bao gồm toán tử `&&` trong JavaScript.
+
+```jsx
+function Mailbox(props) {
+  const unreadMessages = props.unreadMessages;
+  return (
+    <div>
+      <h1>Hello!</h1>
+      {unreadMessages.length > 0 &&
+        <h2>
+          You have {unreadMessages.length} unread messages.
+        </h2>
+      }
+    </div>
+  );
+}
+
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Mailbox unreadMessages={messages} />);
+```
+
+ - Trong JavaScript:
+
+* `true && expression` → trả về `expression`
+* `false && expression` → trả về `false`
+
+Nên nếu điều kiện đúng, element sau `&&` sẽ được render; nếu sai, React bỏ qua.
+
+Lưu ý: Nếu trả về một giá trị falsy (vd: `0`) thì React vẫn render giá trị đó. Ví dụ:
+
+```jsx
+render() {
+  const count = 0;
+  return (
+    <div>
+      {count && <h1>Messages: {count}</h1>}
+    </div>
+  );
+}
+```
+
+Sẽ render `<div>0</div>`.
+
+---
+
+#### d, Inline If-Else với toán tử điều kiện `? :`
+
+```jsx
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
+    </div>
+  );
+}
+```
+
+Hoặc dùng cho cả element:
+
+```jsx
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      {isLoggedIn
+        ? <LogoutButton onClick={this.handleLogoutClick} />
+        : <LoginButton onClick={this.handleLoginClick} />
+      }
+    </div>
+  );
+}
+```
+
 ## PHẦN 2: LIFECYCLE
 
 ### 1. useState Hook
