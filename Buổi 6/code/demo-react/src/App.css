@@ -1,0 +1,51 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: pink;
+}
+
+header img {
+  width: 40%;
+}
+
+.header-title {
+  font-weight: bold;
+  font-size: 4rem;
+  background: linear-gradient(40deg, #b462c9, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-description {
+  color: #666;
+}
+
+.main-list img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.main-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+}
+
+.main-list-item {
+  margin: 1rem;
+  text-align: center;
+  background-color: tomato;
+  border-radius: 8px;
+  color: white;
+}
+
+.active {
+  background-color: darkorange;
+}
