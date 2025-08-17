@@ -60,6 +60,7 @@ function Welcome(props) {
  - Bước 4: Chọn React
  - Bước 5: Chọn Javascript
  - Bước 6: Chạy theo 3 lệnh yêu cầu
+
 **cra**
 1. Cài đặt Node.jsjs
 2. Tạo 1 folder để chứa project React, vào trong folder đè shift nhấn chuột phải.
