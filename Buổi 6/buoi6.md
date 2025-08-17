@@ -49,6 +49,7 @@ function Welcome(props) {
 - Hàng nghìn công ty và dự án trên toàn thế giới
 
 ### 2. Cài đặt môi trường
+**vite**
  - Bước 1: Cài Node.js
  - Bước 2: Mở Terminal
    - Gõ lệnh `npm create vite@latest`
@@ -59,7 +60,50 @@ function Welcome(props) {
  - Bước 4: Chọn React
  - Bước 5: Chọn Javascript
  - Bước 6: Chạy theo 3 lệnh yêu cầu
+**cra**
+2. Tạo 1 folder để chứa project React, vào trong folder đè shift nhấn chuột phải và chọn như hình.
+![alt text](image.png)
 
+3. Tiếp theo gõ các dòng lệnh sau để tạo project
+```html
+npm install -g create-react-app
+create-react-app my-app 
+```
+
+NPM sẽ tự động tạo cho ta 1 project tên là my-app và install các module và lib cần thiết cho chúng ta.
+
+4. Vào thư mục src xóa hết các file trong đây, lưu ý không xóa cả thư src mà chỉ xóa các file ở trong đó.
+
+5. Sau đó tạo mới 2 file, **Index.js** và **App.js**,.
+Trong **App.js** các bạn code như sau: import React from 'react';
+```js
+class App extends React.Component {
+   render() {
+      return (
+         <div>
+            Hello World!!!
+         </div>
+      );
+   }
+}
+export default App;
+```
+
+Đây là React component đầu tiên của chúng ta, chúng ta sẽ tìm hiểu component là gì ở các bài sau, component này là App sẽ render Hello World ra màn hình. Tiếp theo trong **index.js** ta code:
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+Bạn thắc mắc không biết Id root ở đâu? Bạn để ý trong project mình có 1 thư mục là public, bạn mở nó ra thấy 1 file index.html mở nó ra và bạn sẽ thấy 1 div với id root như hình:
+![alt text](image-1.png)
+Đây là file HTML chính của ta, tất cả component sẽ được render ra đây.
+
+6. Running the Server:
+Các bạn mở cmd lên và gõ lệnh: npm start.
 ### 3. Lợi ích của React
  - Độ hot, nhiều người tiếp cận
  - Được đánh giá là thân thiện với SEO trong những Lib/FW JS (SEO - Search Engine Optimization)
